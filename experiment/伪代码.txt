@@ -1,0 +1,44 @@
+ //0 is client mode and 1 is server mode
+mode = 0;
+// shortest length of args is 3, longest length is 7
+minLength = 3, maxLength = 7;
+// -c option is client mode, -s is server mode
+clientOption = "-c", serverOption = "-s";
+hOption = "-h", pOption = "-p", tOption = "-t";
+// min port number is 1024, max is 65535
+minPort = 1024, maxPort = 65535;
+
+if args.length < minLength || args.length > maxLength       // args length error
+    then print Error: missing or additional arguments
+         exit
+    else if args[0] = clientMode                               // client mode
+        then if !(args[1] = hOption) || !(args[3] = pOption) || !(args[5] = tOption)
+             then print Error: invalid input
+                  exit
+        then if args[4] < minPort || args[4] > maxPort
+             then print Error: port number must be in the range 1024 to 65535
+                  exit
+    else if args[0] = serverMode                               // client mode
+        then if !(args[1] = pOption)
+             then print Error: invalid input
+                  exit
+        then if args[2]) < minPort || args[2] > maxPort
+            then print Error: port number must be in the range 1024 to 65535
+                 exit
+        mode <-- 1
+        else print Error: invalid input
+             exit
+
+if mode = 0                                                 // client mode
+    then print This is client mode
+         while true 
+            do if currentTime - startTime >= totalTime 
+                    then break
+               out.write(packet) // OutputStream out = socket.getOutputStream(), byte[] packet = new byte[1000];
+               ++pachetNumber
+        print sent = packetNumber KB rate= packetNumber / (1000 * time) Mbps
+    else print This is server mode.
+         while (length = in.read(buf)) != -1 // byte[] buf = new byte[1000],InputStream in = clientSocket.getInputStream()
+            do if length == 1000
+                    then ++pachetNumber
+        print received = packetNumber KB rate = (double)packetNumber / totalTime Mbps
